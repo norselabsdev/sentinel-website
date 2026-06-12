@@ -1,0 +1,14 @@
+---
+// ─── Home page ───
+// Server-renders the Sentinel homepage. The whole React tree is an Astro island:
+// Astro compiles <App/> to HTML on the server (SSR) and ships a hydration bundle
+// (client:load) so the GSAP scroll-pin, the mobile nav, and other interactive
+// bits come alive in the browser. No Babel-in-the-browser, no base64 blobs —
+// every asset is a real file under public/assets/.
+import Layout from '../layouts/Layout.astro';
+import App from '../components/App.tsx';
+---
+
+<Layout>
+  <App client:load />
+</Layout>
