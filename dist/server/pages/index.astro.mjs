@@ -3,7 +3,7 @@ import 'piccolore';
 import 'clsx';
 /* empty css                                 */
 import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
-import '../chunks/globals_CUqkIAQj.mjs';
+import '../chunks/globals_DWMYv18N.mjs';
 import * as React$1 from 'react';
 export { renderers } from '../renderers.mjs';
 
@@ -403,7 +403,7 @@ function Header$1() {
               "aria-label": tr$2("nav.menu", "Menu"),
               "aria-expanded": mobileOpen,
               "aria-controls": "sn-mobile-nav",
-              style: { width: 42, height: 42, display: "grid", placeItems: "center", background: "transparent", border: "1px solid rgba(255,255,255,0.14)", borderRadius: 12, cursor: "pointer" },
+              style: { width: 38, height: 34, display: "grid", placeItems: "center", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.14)", borderRadius: 999, cursor: "pointer" },
               children: /* @__PURE__ */ jsx("svg", { width: "20", height: "20", viewBox: "0 0 24 24", fill: "none", stroke: "#fff", strokeWidth: "2", strokeLinecap: "round", children: mobileOpen ? /* @__PURE__ */ jsxs("g", { children: [
                 /* @__PURE__ */ jsx("line", { x1: "6", y1: "6", x2: "18", y2: "18" }),
                 /* @__PURE__ */ jsx("line", { x1: "18", y1: "6", x2: "6", y2: "18" })

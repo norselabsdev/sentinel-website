@@ -210,7 +210,7 @@ export const ru: Partial<Messages> = {
   'nodeHosting.card2Body':
     'Подключитесь к любому облачному серверу по SSH и разворачивайте dVPN-узлы пакетами — запускайте, мониторьте и управляйте всем флотом из одного места.',
   'nodeHosting.ctaHeading': 'Запустите dVPN-узел сегодня!',
-  'nodeHosting.liveTest': 'Смотреть тест узла в реальном времени',
+  'nodeHosting.liveTest': 'Тест узла в реальном времени',
 
   // ─── Agentic payments (x402) section ───
   'agentic.heading': 'Первая децентрализованная VPN-сеть для AI-агентов.',

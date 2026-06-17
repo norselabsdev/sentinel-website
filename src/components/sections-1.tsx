@@ -327,7 +327,7 @@ function Header() {
           <div style={{ display:'flex', alignItems:'center', gap:10 }}>
             <LangSwitcher />
             <button onClick={() => setMobileOpen(o => !o)} aria-label={tr('nav.menu', 'Menu')} aria-expanded={mobileOpen} aria-controls="sn-mobile-nav"
-              style={{ width:42, height:42, display:'grid', placeItems:'center', background:'transparent', border:'1px solid rgba(255,255,255,0.14)', borderRadius:12, cursor:'pointer' }}>
+              style={{ width:38, height:34, display:'grid', placeItems:'center', background:'rgba(255,255,255,0.05)', border:'1px solid rgba(255,255,255,0.14)', borderRadius:999, cursor:'pointer' }}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round">
                 {mobileOpen
                   ? <g><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></g>
