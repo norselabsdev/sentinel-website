@@ -210,6 +210,13 @@ function LangSwitcher() {
   const current = (typeof window !== 'undefined' && window.__locale) || 'en';
   const [open, setOpen] = useState(false);
   const closeT = useRef(null);
+  // Hover-to-open only on devices that truly hover (desktop pointers). On touch
+  // the synthesized mouseenter→click→mouseleave sequence makes hover handlers
+  // fight the click toggle — the menu opens on mouseenter then the click closes
+  // it, so the first tap "flickers" and a second tap is needed. Gating hover
+  // behind (hover: hover) leaves touch to the click toggle alone.
+  const canHover = typeof window !== 'undefined' && typeof window.matchMedia === 'function'
+    && window.matchMedia('(hover: hover)').matches;
   const enter = () => { if (closeT.current) clearTimeout(closeT.current); setOpen(true); };
   const leave = () => { if (closeT.current) clearTimeout(closeT.current); closeT.current = setTimeout(() => setOpen(false), 350); };
   useEffect(() => () => { if (closeT.current) clearTimeout(closeT.current); }, []);
@@ -225,12 +232,12 @@ function LangSwitcher() {
   };
 
   return (
-    <div style={{ position:'relative' }} onMouseEnter={enter} onMouseLeave={leave}>
+    <div style={{ position:'relative' }} onMouseEnter={canHover ? enter : undefined} onMouseLeave={canHover ? leave : undefined}>
       <button type="button" aria-haspopup="menu" aria-expanded={open} aria-label={tr('lang.label', 'Language')}
         onClick={() => setOpen(o => !o)}
         style={{ display:'inline-flex', alignItems:'center', gap:7, height:34, padding:'0 12px', borderRadius:999, cursor:'pointer', background:'rgba(255,255,255,0.05)', border:'1px solid rgba(255,255,255,0.14)', fontFamily:T.fontHeading, fontWeight:500, fontSize:13.5, color:'rgba(234,234,234,0.92)', transition:'background 160ms, border-color 160ms' }}
-        onMouseOver={e => { e.currentTarget.style.background='rgba(255,255,255,0.08)'; }}
-        onMouseOut={e => { e.currentTarget.style.background='rgba(255,255,255,0.05)'; }}>
+        onMouseOver={canHover ? (e => { e.currentTarget.style.background='rgba(255,255,255,0.08)'; }) : undefined}
+        onMouseOut={canHover ? (e => { e.currentTarget.style.background='rgba(255,255,255,0.05)'; }) : undefined}>
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"/></svg>
         <span>{meta.names[current] || current}</span>
         <svg width="8" height="5" viewBox="0 0 9 6" fill="none" style={{ transform:open?'rotate(180deg)':'none', transition:'transform 220ms' }} aria-hidden="true"><path d="M0.5 1L4.5 5L8.5 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/></svg>

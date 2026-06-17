@@ -247,6 +247,7 @@ function LangSwitcher() {
   const current = typeof window !== "undefined" && window.__locale || "en";
   const [open, setOpen] = useState(false);
   const closeT = useRef(null);
+  const canHover = typeof window !== "undefined" && typeof window.matchMedia === "function" && window.matchMedia("(hover: hover)").matches;
   const enter = () => {
     if (closeT.current) clearTimeout(closeT.current);
     setOpen(true);
@@ -267,7 +268,7 @@ function LangSwitcher() {
     document.cookie = `${meta.cookie}=${encodeURIComponent(loc)}; path=/; max-age=31536000; samesite=lax${secure}`;
     window.location.reload();
   };
-  return /* @__PURE__ */ jsxs("div", { style: { position: "relative" }, onMouseEnter: enter, onMouseLeave: leave, children: [
+  return /* @__PURE__ */ jsxs("div", { style: { position: "relative" }, onMouseEnter: canHover ? enter : void 0, onMouseLeave: canHover ? leave : void 0, children: [
     /* @__PURE__ */ jsxs(
       "button",
       {
@@ -277,12 +278,12 @@ function LangSwitcher() {
         "aria-label": tr$2("lang.label", "Language"),
         onClick: () => setOpen((o) => !o),
         style: { display: "inline-flex", alignItems: "center", gap: 7, height: 34, padding: "0 12px", borderRadius: 999, cursor: "pointer", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.14)", fontFamily: T.fontHeading, fontWeight: 500, fontSize: 13.5, color: "rgba(234,234,234,0.92)", transition: "background 160ms, border-color 160ms" },
-        onMouseOver: (e) => {
+        onMouseOver: canHover ? ((e) => {
           e.currentTarget.style.background = "rgba(255,255,255,0.08)";
-        },
-        onMouseOut: (e) => {
+        }) : void 0,
+        onMouseOut: canHover ? ((e) => {
           e.currentTarget.style.background = "rgba(255,255,255,0.05)";
-        },
+        }) : void 0,
         children: [
           /* @__PURE__ */ jsxs("svg", { width: "15", height: "15", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "1.6", "aria-hidden": "true", children: [
             /* @__PURE__ */ jsx("circle", { cx: "12", cy: "12", r: "9" }),
