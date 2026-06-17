@@ -749,7 +749,7 @@ function V2RayMark({ size = 30 }) {
 function BuilderStackSection() {
   const isMobile = useIsMobile();
   const logoTile = { width:36, height:36, borderRadius:10, flexShrink:0, display:'inline-flex', alignItems:'center', justifyContent:'center', background:'rgba(255,255,255,0.05)', border:'1px solid rgba(255,255,255,0.08)' };
-  const rowChip = { display:'flex', alignItems:'center', justifyContent:'center', gap:12, background:'rgba(255,255,255,0.035)', border:'1px solid rgba(255,255,255,0.09)', borderRadius:14, padding:'14px 15px' };
+  const rowChip = { display:'flex', alignItems:'center', justifyContent:'flex-start', gap:12, background:'rgba(255,255,255,0.035)', border:'1px solid rgba(255,255,255,0.09)', borderRadius:14, padding:'14px 15px' };
   const chipName = { fontFamily:T.fontHeading, fontWeight:600, fontSize:14, lineHeight:1.25, color:T.fog };
   const chipSub = { fontFamily:T.fontBody, fontSize:12, lineHeight:1.35, color:'rgba(214,222,240,0.62)' };
   const actionStyle = { display:'flex', alignItems:'center', justifyContent:'center', gap:9, alignSelf:'stretch', width:'100%', height:46, padding:'0 21px', borderRadius:999, border:'1px solid rgba(125,160,255,0.35)', background:'linear-gradient(180deg, rgba(56,124,255,0.18), rgba(38,112,255,0.07))', boxShadow:'inset 0 1px 0 rgba(255,255,255,0.10)', fontFamily:T.fontHeading, fontWeight:600, fontSize:14, letterSpacing:'0.01em', color:'#b9ceff', textDecoration:'none', whiteSpace:'nowrap', boxSizing:'border-box' };
@@ -876,7 +876,7 @@ function BuilderStackSection() {
             </span>
           </div>
           <div style={ isMobile
-            ? { display:'flex', flexWrap:'wrap', gap:'12px 14px', alignItems:'center', justifyContent:'center' }
+            ? { display:'flex', flexWrap:'wrap', gap:'12px 14px', alignItems:'center', justifyContent:'flex-start' }
             : { display:'flex', flexWrap:'wrap', gap:'12px 18px', alignItems:'center' } }>
             <FlagChip code="US" name="United States" /><FlagChip code="JP" name="Japan" /><FlagChip code="DE" name="Germany" /><FlagChip code="BR" name="Brazil" /><FlagChip code="GB" name="United Kingdom" /><FlagChip code="SE" name="Sweden" /><FlagChip code="NL" name="Netherlands" /><FlagChip code="SG" name="Singapore" /><FlagChip code="CH" name="Switzerland" />
             <span title={tr('resilience.moreCountriesTitle', '90+ countries across six continents')} style={{ display:'inline-flex', alignItems:'center', background:'rgba(94,148,255,0.08)', border:'1px solid rgba(125,160,255,0.32)', borderRadius:999, padding:'4px 8px', fontFamily:T.fontHeading, fontWeight:600, fontSize:12.5, color:'#9dbcff', whiteSpace:'nowrap' }}>{tr('resilience.moreCountries', '+ 80 more')}</span>
@@ -926,8 +926,8 @@ function BuilderStackSection() {
               </div>
               <ul style={{ listStyle:'none', display:'flex', flexDirection:'column', gap:12, margin:isMobile?0:'0 clamp(32px,2.5vw,41px)', padding:0 }}>
                 {c.points.map(pt => (
-                  <li key={pt} style={{ display:'flex', alignItems:isMobile?'center':'flex-start', justifyContent:isMobile?'center':'flex-start', gap:11, textAlign:isMobile?'center':'left' }}>
-                    <span aria-hidden="true" style={{ width:6, height:6, borderRadius:'50%', background:'#5e94ff', flexShrink:0, marginTop:isMobile?0:8 }} />
+                  <li key={pt} style={{ display:'flex', alignItems:'flex-start', justifyContent:'flex-start', gap:11, textAlign:'left' }}>
+                    <span aria-hidden="true" style={{ width:6, height:6, borderRadius:'50%', background:'#5e94ff', flexShrink:0, marginTop:8 }} />
                     <span style={{ fontFamily:T.fontBody, fontSize:14.5, lineHeight:'22px', color:T.onDark80 }}>{pt}</span>
                   </li>
                 ))}

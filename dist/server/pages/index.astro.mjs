@@ -37,7 +37,11 @@ const $$Layout = createComponent(($$result, $$props, $$slots) => {
     pt: "pt_BR"
   };
   const ogLocale = OG_LOCALES[locale] ?? locale;
-  return renderTemplate(_a || (_a = __template(["<html", "", '> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>', '</title><meta name="description"', '><meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical"', '><!-- OpenGraph --><meta property="og:type" content="website"><meta property="og:site_name" content="Sentinel"><meta property="og:locale"', '><meta property="og:title"', '><meta property="og:description"', '><meta property="og:url"', '><meta property="og:image"', '><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt"', '><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@sentinelp2p"><meta name="twitter:title"', '><meta name="twitter:description"', '><meta name="twitter:image"', '><meta name="twitter:image:alt"', `><meta name="theme-color" content="#0156FC"><!-- Critical inline CSS \u2014 applied on first paint, BEFORE the external
+  return renderTemplate(_a || (_a = __template(["<html", "", '> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>', '</title><meta name="description"', '><meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical"', '><!-- OpenGraph --><meta property="og:type" content="website"><meta property="og:site_name" content="Sentinel"><meta property="og:locale"', '><meta property="og:title"', '><meta property="og:description"', '><meta property="og:url"', '><meta property="og:image"', '><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt"', '><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@sentinelp2p"><meta name="twitter:title"', '><meta name="twitter:description"', '><meta name="twitter:image"', '><meta name="twitter:image:alt"', `><meta name="theme-color" content="#0156FC"><!-- Preload the latin Funnel Display woff2 (the headline/CTA face, U+0000-00FF).
+         Without this the hero CTAs first paint in the system-ui fallback, then
+         visibly resize when Funnel Display swaps in on mobile refresh (FOUC flash).
+         Preloading makes the real font available at first paint. Keep this URL in
+         sync with the /* latin */ @font-face src in global.css. --><link rel="preload" href="/assets/fonts/d3835081-8789-4264-9ac0-d8d2f7d8b482.woff2" as="font" type="font/woff2" crossorigin><!-- Critical inline CSS \u2014 applied on first paint, BEFORE the external
          global.css <link> loads. Without this the un-styled skip link flashes
          visibly in the top-left and the dark background pops in late (FOUC).
          These rules duplicate the canonical ones in global.css; keep them in
@@ -51,7 +55,7 @@ const $$Layout = createComponent(($$result, $$props, $$slots) => {
     </style><!-- Seed the active locale before the React island hydrates, so the client's
          globals bootstrap (lib/globals.ts) re-applies the same locale the server
          rendered with \u2014 keeping SSR markup and hydration in sync. --><script>(function(){`, "\n      window.__locale = locale;\n      window.__isMobile = isMobile;\n    })();<\/script>", '</head> <body> <a class="sn-skip" href="#main">Skip to content</a> ', ' <!-- Ambient music: OFF by default, pure intent toggle. --> <div id="sn-music"> <span id="sn-music-label" aria-hidden="true">Sound &middot; off</span> <button id="sn-music-btn" type="button" aria-pressed="false" aria-label="Unmute ambient music" title="Unmute ambient music"> <svg class="sn-music-play" width="16" height="14" viewBox="0 0 16 14" fill="none" aria-hidden="true"><path d="M8.2 1.1a.7.7 0 0 1 1.1.6v10.6a.7.7 0 0 1-1.1.6L4.6 10H2.4A1.4 1.4 0 0 1 1 8.6V5.4C1 4.6 1.6 4 2.4 4h2.2l3.6-2.9z" fill="currentColor"></path><path d="M11.2 4.8 14.8 9.2M14.8 4.8 11.2 9.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path></svg> <span class="sn-music-bars" aria-hidden="true"><i></i><i></i><i></i></span> </button> <audio id="sn-music-audio" src="/assets/media/ambient-music.mp3" loop preload="auto"></audio> </div> <script src="/scripts/music.js"><\/script> </body> </html>'])), addAttribute(locale, "lang"), addAttribute(dir, "dir"), title, addAttribute(description, "content"), addAttribute(canonical, "href"), addAttribute(ogLocale, "content"), addAttribute(title, "content"), addAttribute(description, "content"), addAttribute(canonical, "content"), addAttribute(ogImage, "content"), addAttribute(ogImageAlt, "content"), addAttribute(title, "content"), addAttribute(description, "content"), addAttribute(ogImage, "content"), addAttribute(ogImageAlt, "content"), defineScriptVars({ locale, isMobile }), renderHead(), renderSlot($$result, $$slots["default"]));
-}, "C:/Users/Connect/AppData/Local/Temp/mw-deploy/src/layouts/Layout.astro", void 0);
+}, "C:/Users/Connect/Desktop/main-website-deploy/src/layouts/Layout.astro", void 0);
 
 const T = window.SENTINEL;
 const L = window.SENTINEL_LINKS;
@@ -872,7 +876,7 @@ function V2RayMark({ size = 30 }) {
 function BuilderStackSection() {
   const isMobile = useIsMobile$1();
   const logoTile = { width: 36, height: 36, borderRadius: 10, flexShrink: 0, display: "inline-flex", alignItems: "center", justifyContent: "center", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" };
-  const rowChip = { display: "flex", alignItems: "center", justifyContent: "center", gap: 12, background: "rgba(255,255,255,0.035)", border: "1px solid rgba(255,255,255,0.09)", borderRadius: 14, padding: "14px 15px" };
+  const rowChip = { display: "flex", alignItems: "center", justifyContent: "flex-start", gap: 12, background: "rgba(255,255,255,0.035)", border: "1px solid rgba(255,255,255,0.09)", borderRadius: 14, padding: "14px 15px" };
   const chipName = { fontFamily: T.fontHeading, fontWeight: 600, fontSize: 14, lineHeight: 1.25, color: T.fog };
   const chipSub = { fontFamily: T.fontBody, fontSize: 12, lineHeight: 1.35, color: "rgba(214,222,240,0.62)" };
   const actionStyle = { display: "flex", alignItems: "center", justifyContent: "center", gap: 9, alignSelf: "stretch", width: "100%", height: 46, padding: "0 21px", borderRadius: 999, border: "1px solid rgba(125,160,255,0.35)", background: "linear-gradient(180deg, rgba(56,124,255,0.18), rgba(38,112,255,0.07))", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.10)", fontFamily: T.fontHeading, fontWeight: 600, fontSize: 14, letterSpacing: "0.01em", color: "#b9ceff", textDecoration: "none", whiteSpace: "nowrap", boxSizing: "border-box" };
@@ -1006,7 +1010,7 @@ function BuilderStackSection() {
             ] })
           ] })
         ] }),
-        /* @__PURE__ */ jsxs("div", { style: isMobile ? { display: "flex", flexWrap: "wrap", gap: "12px 14px", alignItems: "center", justifyContent: "center" } : { display: "flex", flexWrap: "wrap", gap: "12px 18px", alignItems: "center" }, children: [
+        /* @__PURE__ */ jsxs("div", { style: isMobile ? { display: "flex", flexWrap: "wrap", gap: "12px 14px", alignItems: "center", justifyContent: "flex-start" } : { display: "flex", flexWrap: "wrap", gap: "12px 18px", alignItems: "center" }, children: [
           /* @__PURE__ */ jsx(FlagChip, { code: "US", name: "United States" }),
           /* @__PURE__ */ jsx(FlagChip, { code: "JP", name: "Japan" }),
           /* @__PURE__ */ jsx(FlagChip, { code: "DE", name: "Germany" }),
@@ -1050,8 +1054,8 @@ function BuilderStackSection() {
         iconBadge(c.icon),
         /* @__PURE__ */ jsx("h3", { style: { flex: isMobile ? "0 1 auto" : 1, minWidth: 0, fontFamily: T.fontHeading, fontWeight: 600, fontSize: isMobile ? 17 : 20, lineHeight: 1.25, color: T.fog, margin: 0, letterSpacing: "-0.005em" }, children: c.title })
       ] }),
-      /* @__PURE__ */ jsx("ul", { style: { listStyle: "none", display: "flex", flexDirection: "column", gap: 12, margin: isMobile ? 0 : "0 clamp(32px,2.5vw,41px)", padding: 0 }, children: c.points.map((pt) => /* @__PURE__ */ jsxs("li", { style: { display: "flex", alignItems: isMobile ? "center" : "flex-start", justifyContent: isMobile ? "center" : "flex-start", gap: 11, textAlign: isMobile ? "center" : "left" }, children: [
-        /* @__PURE__ */ jsx("span", { "aria-hidden": "true", style: { width: 6, height: 6, borderRadius: "50%", background: "#5e94ff", flexShrink: 0, marginTop: isMobile ? 0 : 8 } }),
+      /* @__PURE__ */ jsx("ul", { style: { listStyle: "none", display: "flex", flexDirection: "column", gap: 12, margin: isMobile ? 0 : "0 clamp(32px,2.5vw,41px)", padding: 0 }, children: c.points.map((pt) => /* @__PURE__ */ jsxs("li", { style: { display: "flex", alignItems: "flex-start", justifyContent: "flex-start", gap: 11, textAlign: "left" }, children: [
+        /* @__PURE__ */ jsx("span", { "aria-hidden": "true", style: { width: 6, height: 6, borderRadius: "50%", background: "#5e94ff", flexShrink: 0, marginTop: 8 } }),
         /* @__PURE__ */ jsx("span", { style: { fontFamily: T.fontBody, fontSize: 14.5, lineHeight: "22px", color: T.onDark80 }, children: pt })
       ] }, pt)) }),
       c.extra && /* @__PURE__ */ jsx("div", { style: { margin: isMobile ? "auto 0 0" : "0 clamp(32px,2.5vw,41px) clamp(36px,2.9vw,45px)", borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 21 }, children: c.extra })
@@ -11842,10 +11846,10 @@ const $$Astro = createAstro();
 const $$Index = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Index;
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, {}, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "App", App, { "client:load": true, "client:component-hydration": "load", "client:component-path": "C:/Users/Connect/AppData/Local/Temp/mw-deploy/src/components/App.tsx", "client:component-export": "default" })} ` })}`;
-}, "C:/Users/Connect/AppData/Local/Temp/mw-deploy/src/pages/index.astro", void 0);
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, {}, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "App", App, { "client:load": true, "client:component-hydration": "load", "client:component-path": "C:/Users/Connect/Desktop/main-website-deploy/src/components/App.tsx", "client:component-export": "default" })} ` })}`;
+}, "C:/Users/Connect/Desktop/main-website-deploy/src/pages/index.astro", void 0);
 
-const $$file = "C:/Users/Connect/AppData/Local/Temp/mw-deploy/src/pages/index.astro";
+const $$file = "C:/Users/Connect/Desktop/main-website-deploy/src/pages/index.astro";
 const $$url = "";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({

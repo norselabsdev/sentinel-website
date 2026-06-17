@@ -72,6 +72,19 @@ const ogLocale = OG_LOCALES[locale] ?? locale;
 
     <meta name="theme-color" content="#0156FC" />
 
+    <!-- Preload the latin Funnel Display woff2 (the headline/CTA face, U+0000-00FF).
+         Without this the hero CTAs first paint in the system-ui fallback, then
+         visibly resize when Funnel Display swaps in on mobile refresh (FOUC flash).
+         Preloading makes the real font available at first paint. Keep this URL in
+         sync with the /* latin */ @font-face src in global.css. -->
+    <link
+      rel="preload"
+      href="/assets/fonts/d3835081-8789-4264-9ac0-d8d2f7d8b482.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
     <!-- Critical inline CSS — applied on first paint, BEFORE the external
          global.css <link> loads. Without this the un-styled skip link flashes
          visibly in the top-left and the dark background pops in late (FOUC).
